@@ -14,6 +14,6 @@ The router is set up so routing will be automatically handled depending on the c
 ## Run
 `npm start` or `yarn start`
 
-** To login you will need to have the ZenAuto app server running - use the following credentials: username - `david` password - `password` **
+**To login you will need to have the ZenAuto app server running - use the following credentials: username - `david` password - `password`**
 
 - If this doens't work, go to the `src/services/config.ts` file to configure the endpoint for the api.
