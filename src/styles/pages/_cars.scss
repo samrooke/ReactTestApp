@@ -1,0 +1,27 @@
+.cars {
+    position: relative;
+    width: 100%;
+    padding: $spacing;
+
+    h1 {
+        padding: 0 $spacing-small;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+
+        li {
+            text-align: center;
+            list-style-type: none;
+            width: calc(100% / 3);
+            padding: $spacing-tiny $spacing-small;
+
+            .card {
+                background-color: $light-grey;
+                padding: $spacing-small;
+            }
+        }
+    }
+}

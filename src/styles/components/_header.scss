@@ -1,0 +1,8 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-tiny $spacing-small;
+    background-color: $light-grey;
+    color: $dark-grey;
+}

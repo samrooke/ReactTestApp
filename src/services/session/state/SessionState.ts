@@ -11,6 +11,8 @@ const SessionReducer = (state: ISessionModel = new SessionModel(), action: ISess
         case EnumSessionActionTypes.CLEAR:
                 sessionStorage.clear();
                 return { user: undefined };
+        default:
+            return state;
     }
 }
 

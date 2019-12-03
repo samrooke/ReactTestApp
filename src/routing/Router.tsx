@@ -9,9 +9,10 @@ import SessionReducer from '../services/session/state/SessionState';
 import SessionModel from '../services/models/session/SessionModel';
 import CarRouter from './Cars/CarRouter';
 import Layout from '../components/Layout/Layout';
-import ISessionModel from '../services/models/session/ISessionModel';
 import IUserModel from '../services/models/user/IUserModel';
-import UserModel from '../services/models/user/UserModel';
+import { BasketStateProvider } from '../services/basket/context/BasketContext';
+import BasketReducer from '../services/basket/state/BasketState';
+import BasketModel from '../services/models/basket/BasketModel';
 
 const Router: React.FC = () => {
     let currentSession = new SessionModel();
@@ -21,16 +22,18 @@ const Router: React.FC = () => {
 
     return (    
         <SessionStateProvider reducer={SessionReducer} initialState={currentSession}>
-            <BrowserRouter>
-                <Layout>
-                    <Switch>
-                        <Route exact path={RouteConstants.Home} component={Home} />
-                        <PrivateRoute exact path={RouteConstants.Dashboard} component={Dashboard} />
-                        <PublicOnlyRoute exact path={RouteConstants.Login} component={Login} />
-                        <CarRouter />
-                    </Switch>
-                </Layout>
-            </BrowserRouter>
+            <BasketStateProvider reducer={BasketReducer} initialState={new BasketModel()}>
+                <BrowserRouter>
+                    <Layout>
+                        <Switch>
+                            <Route exact path={RouteConstants.Home} component={Home} />
+                            <PrivateRoute exact path={RouteConstants.Dashboard} component={Dashboard} />
+                            <PublicOnlyRoute exact path={RouteConstants.Login} component={Login} />
+                            <CarRouter />
+                        </Switch>
+                    </Layout>
+                </BrowserRouter>
+            </BasketStateProvider>
         </SessionStateProvider>
     );
 };

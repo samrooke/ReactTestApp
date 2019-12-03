@@ -1,15 +1,10 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import ISessionModel from '../../models/session/ISessionModel';
+import IStateProvider from '../../generic/interfaces/IStateProvider';
 
 export const SessionContext = createContext({});
 
-interface ISessionStateProvider {
-    reducer: any;
-    initialState: ISessionModel;
-    children: React.ReactNode;
-}
-
-export const SessionStateProvider = ({ reducer, initialState, children }: ISessionStateProvider) => (
+export const SessionStateProvider = ({ reducer, initialState, children }: IStateProvider<ISessionModel>) => (
     <SessionContext.Provider value={useReducer(reducer, initialState)}>
         {children}
     </SessionContext.Provider>
