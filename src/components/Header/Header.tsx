@@ -3,14 +3,16 @@ import { useSessionState } from '../../services/session/context/SessionContext';
 import EnumSessionActionTypes from '../../services/session/EnumSessionActionTypes';
 import { useBasketState } from '../../services/basket/context/BasketContext';
 import IBasketItemModel from '../../services/models/basket/item/IBasketItemModel';
+import { Link } from 'react-router-dom';
+import BaseRouteConstants from '../../routing/RouteConstants';
 
 export const Header: React.FC = () => {
-    const [ sessionState, dispatch ] = useSessionState() as any;
+    const { sessionState, dispatch } = useSessionState();
     const [ basketState ] = useBasketState() as any;
 
     return (
         <div className="header">
-            <h1>React Test App</h1>
+            <Link to={BaseRouteConstants.Home}><h1>React Test App</h1></Link>
             <div>
                 {basketState.items.length > 0 && (
                     <div>

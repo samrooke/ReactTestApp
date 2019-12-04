@@ -15,7 +15,7 @@ class LoginModel implements ILoginModel {
 
 const Login: React.FC = () => {
     const [ userState, setUserState ] = useState(new LoginModel());
-    const [ sessionState, dispatch ] = useSessionState() as any;
+    const { dispatch } = useSessionState();
 
     const setValue = (attribute: string, value: string) => {
         setUserState({...userState, [attribute]: value});
@@ -44,7 +44,7 @@ const Login: React.FC = () => {
                 value={userState.password}
                 onChange={(e) => setValue("password", e.target.value)}
             />
-            <button onClick={(e) => attemptLogin()}>Submit</button>
+            <button onClick={() => attemptLogin()}>Submit</button>
         </div>
     );
 }

@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useReducer, Dispatch } from 'react';
 import ISessionModel from '../../models/session/ISessionModel';
 import IStateProvider from '../../generic/interfaces/IStateProvider';
+import ISessionAction from '../ISessionAction';
 
 export const SessionContext = createContext({});
 
@@ -10,4 +11,13 @@ export const SessionStateProvider = ({ reducer, initialState, children }: IState
     </SessionContext.Provider>
 );
 
-export const useSessionState = () => useContext(SessionContext);
+interface ISessionContext {
+    sessionState: ISessionModel;
+    dispatch: Dispatch<ISessionAction>;
+}
+
+export const useSessionState = (): ISessionContext => {
+    const [ sessionState, dispatch ] = useContext(SessionContext) as any;
+
+    return { sessionState, dispatch };
+};

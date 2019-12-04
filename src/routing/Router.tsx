@@ -39,7 +39,7 @@ const Router: React.FC = () => {
 };
 
 export const PrivateRoute = ({ component: Component, ...rest}: any) => {
-    const [ sessionState ] = useSessionState() as any;
+    const { sessionState } = useSessionState();
     
     return (
         <Route
@@ -63,7 +63,7 @@ export const PrivateRoute = ({ component: Component, ...rest}: any) => {
 };
 
 export const PublicOnlyRoute = ({ component: Component, ...rest}: any) => {
-    const [ sessionState ] = useSessionState() as any;
+    const { sessionState } = useSessionState();
 
     return (
         <Route
