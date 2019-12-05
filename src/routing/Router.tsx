@@ -1,18 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard/Dashboard';
-import Home from '../pages/Home/Home';
-import Login from '../pages/Login/Login';
-import RouteConstants from './RouteConstants';
-import { SessionStateProvider, useSessionState } from '../services/session/context/SessionContext';
-import SessionReducer from '../services/session/state/SessionState';
-import SessionModel from '../services/models/session/SessionModel';
-import CarRouter from './Cars/CarRouter';
+
 import Layout from '../components/Layout/Layout';
-import IUserModel from '../services/models/user/IUserModel';
+
+import Home from '../pages/Home/Home';
+import Dashboard from '../pages/Dashboard/Dashboard';
+import Login from '../pages/Login/Login';
+import Test from '../pages/Test/Test';
+
 import { BasketStateProvider } from '../services/basket/context/BasketContext';
 import BasketReducer from '../services/basket/state/BasketState';
 import BasketModel from '../services/models/basket/BasketModel';
+import SessionModel from '../services/models/session/SessionModel';
+import IUserModel from '../services/models/user/IUserModel';
+import { SessionStateProvider, useSessionState } from '../services/session/context/SessionContext';
+import SessionReducer from '../services/session/state/SessionState';
+import CarRouter from './Cars/CarRouter';
+import RouteConstants from './RouteConstants';
 
 const Router: React.FC = () => {
     let currentSession = new SessionModel();
@@ -25,12 +29,11 @@ const Router: React.FC = () => {
             <BasketStateProvider reducer={BasketReducer} initialState={new BasketModel()}>
                 <BrowserRouter>
                     <Layout>
-                        <Switch>
-                            <Route exact path={RouteConstants.Home} component={Home} />
-                            <PrivateRoute exact path={RouteConstants.Dashboard} component={Dashboard} />
-                            <PublicOnlyRoute exact path={RouteConstants.Login} component={Login} />
-                            <CarRouter />
-                        </Switch>
+                        <Route exact path={RouteConstants.Home} component={Home} />
+                        <PrivateRoute exact path={RouteConstants.Dashboard} component={Dashboard} />
+                        <PublicOnlyRoute exact path={RouteConstants.Login} component={Login} />
+                        <CarRouter />
+                        <Route exact path={RouteConstants.Test} component={Test} />
                     </Layout>
                 </BrowserRouter>
             </BasketStateProvider>

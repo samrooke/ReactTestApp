@@ -1,0 +1,28 @@
+.popout {
+    position: absolute;
+    max-width: 100%;
+
+    &.left {
+        right: 100%;
+        top: 50%;
+        transform: translateX(50%);
+    }
+
+    &.top {
+        bottom: 100%;
+        left: 50%;
+        transform: translateY(50%);
+    }
+
+    &.right {
+        left: 100%;
+        top: 50%;
+        transform: translateX(50%);
+    }
+
+    &.bottom {
+        top: 100%;
+        left: 50%;
+        transform: translateY(50%);
+    }
+}
